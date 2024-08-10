@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database MCQs</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-bottom: 20px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding-bottom: 80px; /* Space for footer */
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .question p {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        label {
+            margin-left: 15px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #results {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .answer-key {
+            display: none;
+            margin-top: 20px;
+            font-size: 1em;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Watermark */
+        body::after {
+            content: "Sagar";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            font-size: 5em;
+            color: rgba(0, 0, 0, 0.1);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Database MCQ        - SagarN.P</h1>
+    </header>
+    <main>
+        <form id="quizForm">
+            <div id="question-container"></div>
+            <button type="button" onclick="checkAnswers()">Submit</button>
+        </form>
+        <div id="results"></div>
+        <div id="answer-key" class="answer-key"></div>
+    </main>
+    <footer>
+        <p></p>
+        <p>Watermark: Sagar</p>
+    </footer>
+    <script>
+        const questions = [
+            // Original Database and ER Diagram Questions (80 total as before)
+   {q: "What is a stored procedure in SQL?", options: ["A precompiled collection of SQL statements", "A function that returns a value", "A variable that stores a value", "A trigger that executes on an event"], answer: 0},
+            {q: "What is a trigger in SQL?", options: ["A function that returns a value", "A stored procedure that is automatically executed in response to certain events", "A variable that stores a value", "A precompiled collection of SQL statements"], answer: 1},
+            {q: "What is a view in SQL?", options: ["A virtual table based on the result set of an SQL query", "A table that stores data permanently", "A function that returns a value", "A stored procedure that is automatically executed in response to certain events"], answer: 0},
+            {q: "Which of the following is not a SQL aggregate function?", options: ["COUNT()", "SUM()", "MAX()", "WHERE()"], answer: 3},
+            {q: "Which SQL keyword is used to sort the result set?", options: ["ORDER BY", "SORT BY", "GROUP BY", "FILTER BY"], answer: 0},
+            {q: "What is a self-join in SQL?", options: ["A join of a table with itself", "A join between two identical tables", "A join that returns identical rows", "A join that returns the same table twice"], answer: 0},
+            {q: "Which SQL statement is used to remove duplicate rows from a result set?", options: ["UNIQUE", "DISTINCT", "REMOVE", "DELETE"], answer: 1},
+            {q: "What is the SQL UNION operator used for?", options: ["To combine the results of two or more SELECT statements", "To combine the columns of two tables", "To find the intersection of two SELECT statements", "To join tables based on common columns"], answer: 0},
+            {q: "What is the difference between UNION and UNION ALL in SQL?", options: ["UNION removes duplicates, UNION ALL does not", "UNION returns duplicates, UNION ALL does not", "UNION is faster than UNION ALL", "There is no difference"], answer: 0},
+            {q: "What is the purpose of the SQL HAVING clause?", options: ["To filter rows after aggregation", "To filter rows before aggregation", "To filter rows during aggregation", "To filter rows without aggregation"], answer: 0},
+            {q: "What is a subquery in SQL?", options: ["A query nested within another query", "A query that runs independently of other queries", "A query that returns a single row", "A query that returns a single column"], answer: 0},
+            {q: "What is the purpose of a transaction in SQL?", options: ["To ensure data integrity during multiple operations", "To speed up data retrieval", "To backup data before deletion", "To encrypt data during transfer"], answer: 0},
+            {q: "Which SQL statement is used to add a new row to a table?", options: ["ADD ROW", "INSERT INTO", "UPDATE ROW", "ADD TO"], answer: 1},
+            {q: "Which SQL function is used to calculate the average of a numeric column?", options: ["SUM()", "AVG()", "COUNT()", "MAX()"], answer: 1},
+            {q: "Which of the following SQL statements is used to remove a table from the database?", options: ["DELETE FROM", "REMOVE TABLE", "DROP TABLE", "ERASE TABLE"], answer: 2},
+            {q: "What is a cursor in SQL?", options: ["A database object used to retrieve a set of rows", "A variable that stores the result of a query", "A table that stores data temporarily", "A function that returns a value"], answer: 0},
+            {q: "Which SQL function is used to find the minimum value in a numeric column?", options: ["MIN()", "LEAST()", "LOWER()", "SMALL()"], answer: 0},
+            {q: "Which SQL statement is used to modify existing data in a table?", options: ["MODIFY", "UPDATE", "CHANGE", "ALTER"], answer: 1},
+            {q: "What is a NULL value in SQL?", options: ["A value of zero", "A missing or undefined value", "A value of one", "A negative value"], answer: 1},
+            {q: "Which SQL statement is used to create a new database?", options: ["CREATE DATABASE", "MAKE DATABASE", "ADD DATABASE", "BUILD DATABASE"], answer: 0},
+
+            // ER Diagram Questions (20)
+            {q: "What does ER stand for in ER Diagram?", options: ["Entity Relationship", "Entity Record", "Entity Resource", "Entity Reference"], answer: 0},
+            {q: "What is an entity in an ER diagram?", options: ["A real-world object", "A relationship", "An attribute", "A process"], answer: 0},
+            {q: "What is a relationship in an ER diagram?", options: ["A link between entities", "An attribute of an entity", "A type of entity", "A table in a database"], answer: 0},
+            {q: "What is an attribute in an ER diagram?", options: ["A property of an entity", "A relationship between entities", "A type of entity", "A table in a database"], answer: 0},
+            {q: "What does a diamond represent in an ER diagram?", options: ["A relationship", "An entity", "An attribute", "A table"], answer: 0},
+            {q: "What does a rectangle represent in an ER diagram?", options: ["An entity", "A relationship", "An attribute", "A table"], answer: 0},
+            {q: "What does an oval represent in an ER diagram?", options: ["An attribute", "An entity", "A relationship", "A table"], answer: 0},
+            {q: "What does a line represent in an ER diagram?", options: ["A relationship between an entity and an attribute", "An entity", "A relationship between two entities", "An attribute"], answer: 0},
+            {q: "What is a primary key?", options: ["A unique identifier for an entity", "An attribute of an entity", "A relationship between entities", "A table in a database"], answer: 0},
+            {q: "What is a foreign key?", options: ["An attribute that creates a link between two tables", "A unique identifier for an entity", "A primary key", "A table in a database"], answer: 0},
+            {q: "What does a double line represent in an ER diagram?", options: ["A total participation of an entity in a relationship", "An entity", "An attribute", "A partial participation of an entity in a relationship"], answer: 0},
+            {q: "What does a single line represent in an ER diagram?", options: ["A partial participation of an entity in a relationship", "An entity", "An attribute", "A total participation of an entity in a relationship"], answer: 0},
+            {q: "What does a double oval represent in an ER diagram?", options: ["A multivalued attribute", "A derived attribute", "A key attribute", "A composite attribute"], answer: 0},
+            {q: "What does a dashed oval represent in an ER diagram?", options: ["A derived attribute", "A multivalued attribute", "A key attribute", "A composite attribute"], answer: 0},
+            {q: "What does a key symbol indicate in an ER diagram?", options: ["A key attribute", "A derived attribute", "A multivalued attribute", "A composite attribute"], answer: 0},
+            {q: "What is a weak entity?", options: ["An entity that cannot be uniquely identified by its attributes alone", "A relationship between entities", "A type of attribute", "A table in a database"], answer: 0},
+            {q: "What is cardinality in an ER diagram?", options: ["The number of instances of one entity that can be associated with instances of another entity", "A unique identifier for an entity", "A relationship between entities", "A type of attribute"], answer: 0},
+            {q: "What is participation constraint?", options: ["Specifies whether all or only some entity instances participate in a relationship", "The number of instances of one entity that can be associated with instances of another entity", "A unique identifier for an entity", "A type of attribute"], answer: 0},
+            {q: "What is a composite attribute?", options: ["An attribute that can be divided into subparts", "An attribute that cannot be divided", "A unique identifier for an entity", "A relationship between entities"], answer: 0},
+            {q: "What is an identifying relationship?", options: ["A relationship that links a weak entity to its owner entity", "A relationship between two entities", "An attribute of an entity", "A table in a database"], answer: 0},
+
+            // Additional Database & ER Diagram Questions (20)
+            {q: "What is the purpose of an index in a database?", options: ["To speed up data retrieval", "To ensure data integrity", "To store a backup of data", "To encrypt data"], answer: 0},
+            {q: "What does the SQL WHERE clause do?", options: ["Filters rows based on a condition", "Groups rows based on a condition", "Sorts rows based on a condition", "Limits the number of rows"], answer: 0},
+            {q: "What is the purpose of the SQL LIKE operator?", options: ["To search for a specified pattern in a column", "To join tables based on common columns", "To filter rows after aggregation", "To combine the results of two or more SELECT statements"], answer: 0},
+            {q: "What is the purpose of the SQL JOIN clause?", options: ["To combine rows from two or more tables based on a related column", "To remove duplicate rows from a result set", "To find the intersection of two SELECT statements", "To sort the result set"], answer: 0},
+            {q: "What is a composite key?", options: ["A primary key composed of two or more columns", "A unique identifier for an entity", "An attribute that can be divided into subparts", "A relationship between entities"], answer: 0},
+            {q: "What is the purpose of a foreign key constraint?", options: ["To enforce a link between two tables", "To ensure that all columns in a table have unique values", "To speed up data retrieval", "To store a backup of data"], answer: 0},
+            {q: "What does the SQL BETWEEN operator do?", options: ["Filters rows within a range of values", "Filters rows based on a condition", "Groups rows based on a condition", "Limits the number of rows"], answer: 0},
+            {q: "What is a super key?", options: ["A set of attributes that uniquely identify a row", "A unique identifier for an entity", "An attribute that can be divided into subparts", "A relationship between entities"], answer: 0},
+            {q: "What is the purpose of the SQL GROUP BY clause?", options: ["To group rows that have the same values in specified columns", "To sort the result set", "To filter rows after aggregation", "To combine rows from two or more tables"], answer: 0},
+            {q: "What is a non-clustered index?", options: ["An index that is stored separately from the table", "An index that is stored with the table", "A unique identifier for an entity", "A set of attributes that uniquely identify a row"], answer: 0},
+            {q: "What is the purpose of the SQL IS NULL operator?", options: ["To check for NULL values in a column", "To check for zero values in a column", "To check for missing values in a column", "To check for duplicate values in a column"], answer: 0},
+            {q: "What is the purpose of the SQL LEFT JOIN clause?", options: ["To combine rows from two or more tables, returning all rows from the left table", "To combine rows from two or more tables, returning only matching rows", "To combine rows from two or more tables, returning all rows from the right table", "To combine rows from two or more tables, returning all rows from both tables"], answer: 0},
+            {q: "What is the purpose of the SQL FULL JOIN clause?", options: ["To combine rows from two or more tables, returning all rows from both tables", "To combine rows from two or more tables, returning only matching rows", "To combine rows from two or more tables, returning all rows from the left table", "To combine rows from two or more tables, returning all rows from the right table"], answer: 0},
+            {q: "What is the purpose of the SQL RIGHT JOIN clause?", options: ["To combine rows from two or more tables, returning all rows from the right table", "To combine rows from two or more tables, returning only matching rows", "To combine rows from two or more tables, returning all rows from the left table", "To combine rows from two or more tables, returning all rows from both tables"], answer: 0},
+            {q: "What is the purpose of the SQL CROSS JOIN clause?", options: ["To combine rows from two or more tables, producing the Cartesian product", "To combine rows from two or more tables, returning only matching rows", "To combine rows from two or more tables, returning all rows from the left table", "To combine rows from two or more tables, returning all rows from the right table"], answer: 0},
+            {q: "What is the purpose of the SQL HAVING clause?", options: ["To filter rows after aggregation", "To filter rows before aggregation", "To filter rows during aggregation", "To filter rows without aggregation"], answer: 0},
+            {q: "What is the purpose of the SQL DISTINCT keyword?", options: ["To remove duplicate rows from a result set", "To return only matching rows", "To return all rows from the left table", "To return all rows from the right table"], answer: 0},
+            {q: "What is the purpose of the SQL ROLLUP clause?", options: ["To create subtotals in a result set", "To create grand totals in a result set", "To create averages in a result set", "To create maximums in a result set"], answer: 0},
+            {q: "What is the purpose of the SQL CUBE clause?", options: ["To create subtotals and grand totals in a result set", "To create averages in a result set", "To create maximums in a result set", "To create minimums in a result set"], answer: 0},
+            {q: "What is the purpose of the SQL GROUPING SETS clause?", options: ["To create custom groupings in a result set", "To create averages in a result set", "To create maximums in a result set", "To create minimums in a result set"], answer: 0}
+        ];
+
+        // Shuffle questions and select 40
+        function shuffleQuestions() {
+            const shuffledQuestions = questions.sort(() => 0.5 - Math.random());
+            const selectedQuestions = shuffledQuestions.slice(0, 40);
+            return selectedQuestions;
+        }
+
+        function renderQuestions() {
+            const questionContainer = document.getElementById('question-container');
+            questionContainer.innerHTML = '';
+            const selectedQuestions = shuffleQuestions();
+
+            selectedQuestions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question');
+                questionDiv.innerHTML = `
+                    <p>${index + 1}. ${question.q}</p>
+                    <label><input type="radio" name="q${index + 1}" value="0"> ${question.options[0]}</label><br>
+                    <label><input type="radio" name="q${index + 1}" value="1"> ${question.options[1]}</label><br>
+                    <label><input type="radio" name="q${index + 1}" value="2"> ${question.options[2]}</label><br>
+                    <label><input type="radio" name="q${index + 1}" value="3"> ${question.options[3]}</label>
+                `;
+                questionContainer.appendChild(questionDiv);
+            });
+        }
+
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            const results = document.getElementById('results');
+            const answerKey = document.getElementById('answer-key');
+            let score = 0;
+            const selectedQuestions = shuffleQuestions();
+            let answerHtml = '<h2>Answer Key:</h2>';
+
+            selectedQuestions.forEach((question, index) => {
+                const q = `q${index + 1}`;
+                const answer = form[q].value;
+                if (answer == question.answer) {
+                    score++;
+                }
+                answerHtml += `
+                    <p>${index + 1}. ${question.q}</p>
+                    <p>Correct Answer: ${question.options[question.answer]}</p>
+                `;
+            });
+
+            results.innerHTML = `Your score is: ${score}/40`;
+            answerKey.innerHTML = answerHtml;
+            answerKey.style.display = 'block'; // Show the answer key
+        }
+
+        // Initial render of questions
+        renderQuestions();
+    </script>
+</body>
+</html>
